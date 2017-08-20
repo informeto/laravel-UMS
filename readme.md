@@ -1,7 +1,5 @@
-
-
-## Laravel based User management system for maintaining registrations and records.
-View realtime logs generated in a remote server using socket connections.
+## CSV UMS
+Laravel based User management system for maintaining user registrations and records.
 
 ## Installation
 Please ensure you have installed php5.6 in your system.
