@@ -43,7 +43,8 @@ namespace App\Library{
                     'dob' => $user_raw_data[5], 
                     'nationality' => $user_raw_data[6], 
                     'address' => json_decode($user_raw_data[7]), 
-                    'education' => json_decode($user_raw_data[8])
+                    'education' => json_decode($user_raw_data[8]),
+                    'registration_time' => $user_raw_data[9]
                 ];
                 
                 $users[] = $userData;

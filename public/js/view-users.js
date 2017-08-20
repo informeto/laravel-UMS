@@ -19,7 +19,7 @@ $(document).ready(function() {
             }
             
             if(user.address){
-                addr_field = '<p class="list-group-item-text">' +user.address.line1 + (user.address.line2? '':', ' + user.address.line2) + '</p>';
+                addr_field = '<p class="list-group-item-text">' +user.address.line1 + (user.address.line2? ', ' + user.address.line2:'') + '</p>';
                 addr_field += '<p class="list-group-item-text">' +user.address.city + ', ' + user.address.region+ '</p>';
                 addr_field += '<p class="list-group-item-text">' +user.address.country + ' - ' + user.address.zip+ '</p>';
                 
@@ -33,9 +33,12 @@ $(document).ready(function() {
                  '<div class="list-group col-md-12">\n\
                     <div class="list-group-item user-info listitem" style="overflow: auto;" data-toggle="collapse" data-target="#details_'+shownUsers.length+'"> \n\
                         <h4 class="list-group-item-heading">'+user.name+'</h4>\n\
+                         <div style="float:right; position: relative; top:-20px">\n\
+                            <p class="small">'+epochAgo(user.registration_time*1000)+'</p>\n\
+                        </div>\n\
                         <div style="display:inline-flex;" class="list-group-item-text">\n\
                             <i class="fa fa-map-marker" aria-hidden="true"></i> &nbsp;&nbsp;<p>'+user.nationality+'</p>\n\
-\n\                     </div><br>\n\
+                        </div><br>\n\
                         <div class="collapse col-md-10 user-details" id="details_'+shownUsers.length+'">\n\
                             <div style="display:inline-flex;" class="list-group-item-text">\n\
                                 <i class="fa fa-envelope-o" aria-hidden="true"></i> &nbsp;&nbsp; <p>'+user.email+(user.pref_comm == 'email' ? '(Primary)':'')+'</p>\n\
@@ -59,10 +62,18 @@ $(document).ready(function() {
                 
         if(users.length == 0){
             $(view_more_button).hide();
+            $("#no_more_users_info").show();
         }
     };
     
-    showUsers(first_users_list);
+    if(first_users_list.length > 0){
+        showUsers(first_users_list);
+    }else{
+        no_users_text = $('#no_users_info');
+        $(view_more_button).hide();
+        $(no_users_text).show();
+    }
+    
     var page = 1;
     loadMore = function(){
         $.get("users/"+page, function( data ) {

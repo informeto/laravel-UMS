@@ -6,12 +6,12 @@ use Illuminate\Http\Request;
 use App\Library\CSVStorage;
 use App\Library\DataValidation;
 
-class ContactController extends Controller
+class RegistrationController extends Controller
 {
     //
-    public function receiveInput()
+    public function registrationForm()
     {
-      return view('contact.receiver');
+      return view('registration.form');
     }
     
     public function register(Request $req){
@@ -46,6 +46,7 @@ class ContactController extends Controller
         
         $receivedData['address'] = json_encode($receivedData['address']);
         $receivedData['education'] = json_encode($receivedData['education']);
+        $receivedData['registration_time'] = time();
         
         CSVStorage::store($receivedData);
         echo json_encode(['success' => 'true']);
@@ -54,7 +55,7 @@ class ContactController extends Controller
     public function viewRegistrations()
     {
       $users = CSVStorage::getRegisteredUsers();
-      return view('contact.view', ['first_users_list' => urlencode(json_encode($users))]);
+      return view('registration.view', ['first_users_list' => urlencode(json_encode($users))]);
     }
     
     public function getUsers($page){

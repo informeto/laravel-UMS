@@ -11,15 +11,22 @@
 |
 */
 
+function sendHome(){
+    return Redirect::to('/registration/view');
+}
+
 Route::get('/', function () {
-    return view('welcome');
+    return sendHome();
 });
 
-Route::get('/contact', 'ContactController@receiveInput');
+Route::group(array('prefix' => 'registration'), function(){
+    Route::get('/', function () {
+        return sendHome();
+    });
+    Route::get('new', 'RegistrationController@registrationForm');
+    Route::post('register', 'RegistrationController@register');
 
-Route::post('/register', 'ContactController@register');
+    Route::get('view', 'RegistrationController@viewRegistrations');
+    Route::get('users/{page?}', 'RegistrationController@getUsers');
+});
 
-
-
-Route::get('/view', 'ContactController@viewRegistrations');
-Route::get('/users/{page?}', 'ContactController@getUsers');

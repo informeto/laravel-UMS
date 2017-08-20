@@ -9,12 +9,15 @@
 @stop
 
 @section('content')
+<style>
+    .bottom-space{ margin-bottom:10px; }
+</style>
     <div id="register_box" style=" margin-top:10px" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
         <div class="panel panel-info">
             <div class="panel-heading">
                 <div class="panel-title">Registration</div>
                 <div style="float:right; position: relative; top:-20px">
-                    <a id="view_reg" href="/view">View Registrations</a>
+                    <a id="view_reg" href="/registration/view">View Registrations</a>
                 </div>
             </div>  
             <div class="panel-body" >
@@ -87,12 +90,12 @@
                         <div id="div_id_address" class="form-group required"> 
                             <label for="id_address" class="control-label col-md-4  requiredField"> Address  </label> 
                             <div class="controls col-md-8 "> 
-                                <input id="address-line1" class="input-md textinput form-control" name="address-line1" type="text" placeholder="address line 1" class="input-xlarge" data-validation="length" data-validation-length="5-100" data-validation-error-msg="Please enter a valid address.">
-                                <input id="address-line2" class="input-md textinput form-control" name="address-line2" type="text" placeholder="address line 2" class="input-xlarge">
-                                <input id="city" name="city" class="input-md textinput form-control" type="text" placeholder="city" class="input-xlarge" data-validation="length" data-validation-length="3-100" data-validation-error-msg="Please enter a valid city.">
-                                <input id="region" name="region" class="input-md textinput form-control" type="text" placeholder="state / province / region" class="input-xlarge" data-validation="length" data-validation-length="2-50" data-validation-error-msg="Please enter a valid region.">
-                                <input id="postal-code" name="postal-code" class="input-md textinput form-control" type="text" placeholder="zip or postal code" class="input-xlarge" data-validation="custom" data-validation-regexp="^[1-9][0-9]{3,7}$" data-validation-error-msg="Please enter a valid postal code.">
-                                <input id="id_country" name="country" class="input-md textinput form-control " placeholder="Country" type="text" data-validation="country" data-validation-error-msg="Please choose a country."/>
+                                <input id="address-line1" class="input-md textinput form-control bottom-space" name="address-line1" type="text" placeholder="address line 1" class="input-xlarge" data-validation="length" data-validation-length="5-100" data-validation-error-msg="Please enter a valid address.">
+                                <input id="address-line2" class="input-md textinput form-control bottom-space" name="address-line2" type="text" placeholder="address line 2" class="input-xlarge">
+                                <input id="city" name="city" class="input-md textinput form-control bottom-space" type="text" placeholder="city" class="input-xlarge" data-validation="length" data-validation-length="3-100" data-validation-error-msg="Please enter a valid city.">
+                                <input id="region" name="region" class="input-md textinput form-control bottom-space" type="text" placeholder="state / province / region" class="input-xlarge" data-validation="length" data-validation-length="2-50" data-validation-error-msg="Please enter a valid region.">
+                                <input id="postal-code" name="postal-code" class="input-md textinput form-control bottom-space" type="text" placeholder="zip or postal code" class="input-xlarge" data-validation="custom" data-validation-regexp="^[1-9][0-9]{3,7}$" data-validation-error-msg="Please enter a valid postal code.">
+                                <input id="id_country" name="country" class="input-md textinput form-control bottom-space" placeholder="Country" type="text" data-validation="country" data-validation-error-msg="Please choose a country."/>
                             </div>
                         </div>
                         
@@ -110,7 +113,7 @@
 @stop
 
 @section('js')
-    <script type="text/javascript" src="js/receiver.js"></script>
+    <script type="text/javascript" src="/js/receiver.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.3.26/jquery.form-validator.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 @stop
